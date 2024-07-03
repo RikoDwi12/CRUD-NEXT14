@@ -9,3 +9,14 @@ export const getContacts = async () => {
     }
     
 }
+
+export const getContactById = async (id: string) => {
+    try {
+      const contact = await prisma.contact.findUnique({
+        where: { id },
+      });
+      return contact;
+    } catch (error) {
+      throw new Error("Failed to fetch contact data");
+    }
+  };
